@@ -1,27 +1,28 @@
 import poolObj from './dbPool.js';
-const { pool } = poolObj;
-
-let logonUsers = new Map();
-
-const sendQuery = async (sql, doCommit, ...params) => {
-    let conn, result
-    try {
-        conn = await pool.getConnection()
-        result = await conn.query(sql, params)
-        if (doCommit) {
-            await conn.query('COMMIT')
-        }
-    } catch (err) {
-		result = err
-        throw err
-    } finally {
-        if (conn)
-            conn.end()
-        return(result)
-    }
-}
-
-const findOneUser = async (username) => sendQuery(`SELECT * FROM users WHERE username = ?`, true, username);
+const { pool } = poolObj; 
+ 
+let logonUsers = new Map(); 
+ 
+const sendQuery = async (sql, doCommit, ...params) => { 
+    let conn, result 
+    try { 
+        conn = await pool.getConnection() 
+        result = await conn.query(sql, params) 
+        if (doCommit) { 
+            await conn.query('COMMIT') 
+        } 
+    } catch (err) { 
+                result = err 
+        throw err 
+    } finally { 
+        if (conn) 
+            conn.release() 
+        return(result) 
+    } 
+} 
+ 
+const findOneUser = async (username) => sendQuery(`SELECT * FROM users WHERE username = 
+?`, false, username); 
 
 const getAllData = async () => 
     sendQuery(`SELECT * FROM data`);
@@ -46,13 +47,6 @@ const deleteData = (id, userid) =>
     sendQuery(`DELETE FROM data WHERE id = ? AND userid = ?`, true, id, userid);
 */
 export {
-    addOneUser,
-    getAllUsers,
-    findOneUser,
-    getAllData,
-    getDataById,
-    addData,
-    logonUsers,
-//    getUserByName,
-//    deleteData,
-}
+    addData, addOneUser, findOneUser,
+    getAllData, getAllUsers, getDataById, logonUsers
+};

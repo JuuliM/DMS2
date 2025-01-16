@@ -1,26 +1,19 @@
-openapi: 3.1.0
-info:
-  title: Karelia API Programming - OpenAPI 3.1.0 Demonstration
-  description: |-
-    This is a sample OpenAPI OAD.
-    
-    Some useful links:
-    - [Learn OpenAPI](https://learn.openapis.org)
-    - [OpenAPI Specification](https://learn.openapis.org/)
-  termsOfService: http://swagger.io/terms/
-  contact:
-    email: apiteam@swagger.io
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 0.1.1
-
-# 2) Apply the security globally to all operations
-security:
-  - bearerAuth: []
-
-servers:
-  - url: http://localhost:3000
+openapi: 3.1.0 
+info: 
+title: Karelia API Programming - OpenAPI 3.1.0 Demonstration 
+description: |- 
+This is a sample OpenAPI OAD. 
+Some useful links: - [Learn OpenAPI](https://learn.openapis.org) - [OpenAPI Specification](https://learn.openapis.org/) 
+termsOfService: http://swagger.io/terms/ 
+contact: 
+email: apiteam@swagger.io 
+license: 
+name: Apache 2.0 
+url: http://www.apache.org/licenses/LICENSE-2.0.html 
+version: 0.1.1 
+# 2) Apply the security globally to all operations 
+security: - bearerAuth: [] 
+servers: - url: http://localhost:3000 - url: juuliu2208468.westeurope.cloudapp.azure.com
   
 tags:
   - name: Sample dataset
