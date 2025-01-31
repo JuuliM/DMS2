@@ -39,6 +39,12 @@ const addOneUser = async (username, password) =>
 const addData = ({id, Firstname, Surname, userid}) =>
     sendQuery(`INSERT INTO data (id, Firstname, Surname, userid) VALUES (?, ?, ?, ?)`, true, id, Firstname, Surname, userid);
 
+const getUserRecords = async () =>
+    sendQuery(`SELECT * from user_records`);
+
+const addSeveralData = async () =>
+    sendQuery(`CALL addSeveralData(?)`);
+
 /*
 const getUserByName = (username) => 
     sendQuery(`SELECT * FROM users WHERE username = ?`, false, username);
@@ -47,6 +53,6 @@ const deleteData = (id, userid) =>
     sendQuery(`DELETE FROM data WHERE id = ? AND userid = ?`, true, id, userid);
 */
 export {
-    addData, addOneUser, findOneUser,
-    getAllData, getAllUsers, getDataById, logonUsers
+    addData, addOneUser, addSeveralData, findOneUser,
+    getAllData, getAllUsers, getDataById, getUserRecords, logonUsers
 };
